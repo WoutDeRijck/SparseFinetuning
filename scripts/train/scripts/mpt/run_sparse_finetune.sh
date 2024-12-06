@@ -20,11 +20,11 @@ export SPARSITY=40
 export NUM_EPOCHS=2
 
 export WANDB_DISABLED=False
-export WANDB_ENTITY=<your_wandb_entity>
-export WANDB_PROJECT=<your_wandb_project>
+export WANDB_ENTITY="woutderijck"
+export WANDB_PROJECT="sparsefinetuning"
 
-export SPARSE_MDL=<path_to_your_sparse_model>
-export TEACHER_MDL=<path_to_your_teacher_model>
+export SPARSE_MDL="meta-llama/Llama-3.2-3B-Instruct"
+export TEACHER_MDL="meta-llama/Llama-3.2-3B-Instruct"
 
 export HARDNESS_CE=1.0
 export HARDNESS_SQUAREHEAD=1.0
@@ -36,10 +36,10 @@ export WARMUP=20ba
 export MAX_DURATION=${NUM_EPOCHS}ep
 export BS=32
 export PER_DEVICE_BS=8
-export RUN_NAME=<your_name_for_the_run>
+export RUN_NAME="first_run"
 
-composer train_sparse.py \
-    yamls/finetune/mpt/sparse_finetune_with_distillation.yaml \
+composer scripts/train/train_sparse.py \
+    scripts/train/yamls/finetune/mpt/sparse_finetune_with_distillation.yaml \
     model_name_or_path=${SPARSE_MDL} \
     max_duration=${MAX_DURATION} \
     run_name=${RUN_NAME} \
